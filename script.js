@@ -7,8 +7,12 @@ var matches = 0;
 function fillBoard() {
   //TODO: randomly assign positions to the tiles on the screen call
   // addTileToBoard here
-  // Hint: You can use a forEach or a for loop
-
+  console.log("hi")
+  for(var i = 0; i < 6; i++){
+    var images = ["paper", "rock", "scissors"];
+    shuffle(images);
+    addTileToBoard(images[i]);
+  }
 };
 
 function shuffle(array) {
@@ -16,7 +20,7 @@ function shuffle(array) {
   var newArray = [];
   var length = array.length;
 
-  for(i = 0; i < length; i++) {
+  for(var i = 0; i < length; i++) {
     var arrLen = array.length;
     var randomPick = Math.floor(Math.random() * arrLen);
     var element = array[randomPick];
@@ -24,9 +28,10 @@ function shuffle(array) {
     array.splice(array.indexOf(element), 1);
     arrLen --;
   }
-
+  console.log(newArray); 
   return newArray;
 };
+
 
 function addTileToBoard(element) {
   //TODO: randomly assign ids to the divs
@@ -66,7 +71,6 @@ $(document).ready(function() {
   $('.token').click( function(e) {
       var element = e.toElement.classList[0]
       var id = e.toElement.getAttribute("id")
-      assignText(id, element)
       bop(this);
       evaluate(e);
   });
